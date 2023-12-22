@@ -169,6 +169,10 @@ public class ScannerFragment extends Fragment {
                     for (Barcode barcode : barcodes) {
                         String rawValue = barcode.getRawValue();
                         codePreview.setText(rawValue);
+
+                        if (getActivity() instanceof MainActivity) {
+                            ((MainActivity) getActivity()).showButtons(true);
+                        }
                     }
                 })
                 .addOnFailureListener(e -> {
