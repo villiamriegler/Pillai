@@ -171,7 +171,7 @@ public class ScannerFragment extends Fragment {
                         codePreview.setText(rawValue);
 
                         if (getActivity() instanceof MainActivity) {
-                            ((MainActivity) getActivity()).showButtons(true);
+                            ((MainActivity) getActivity()).showButtons(rawValue);
                         }
                     }
                 })

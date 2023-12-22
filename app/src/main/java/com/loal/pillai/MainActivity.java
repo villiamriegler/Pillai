@@ -6,9 +6,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -17,7 +19,10 @@ public class MainActivity extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationView;
     FloatingActionButton scanBtn;
-    CardView continueBtn;
+    CardView continueCard;
+    ImageButton continueBtn;
+
+    String lastCode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         replaceFragment(new ScannerFragment());
 
         scanBtn = findViewById(R.id.scanBtn);
+        continueCard = findViewById(R.id.continueCard);
         continueBtn = findViewById(R.id.continueBtn);
 
         scanBtn.setOnClickListener(view -> replaceFragment(new ScannerFragment()));
@@ -40,11 +46,11 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView.setOnItemSelectedListener(item -> {
             switch(item.getItemId()) {
                 case R.id.help:
-                    showButtons(false);
+                    showButtons(null);
                     replaceFragment(new HelpFragment());
                     break;
                 case R.id.account:
-                    showButtons(false);
+                    showButtons(null);
                     replaceFragment(new AccountFragment());
                     break;
                 case R.id.scan:
@@ -52,6 +58,12 @@ public class MainActivity extends AppCompatActivity {
                     break;
             }
             return true;
+        });
+
+        continueBtn.setOnClickListener(view -> {
+            Intent intent = new Intent(getApplicationContext(), DrugInfoActivity.class);
+            intent.putExtra("CODE", lastCode);
+            startActivity(intent);
         });
     }
 
@@ -66,13 +78,14 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
-    public void showButtons(boolean hasCode) {
-        if(hasCode) {
-            scanBtn.setVisibility(View.INVISIBLE);
-            continueBtn.setVisibility(View.VISIBLE);
+    public void showButtons(String code) {
+        lastCode = code;
+        if(!code.isEmpty()) {
+            scanBtn.setVisibility(View.GONE);
+            continueCard.setVisibility(View.VISIBLE);
         } else {
             scanBtn.setVisibility(View.VISIBLE);
-            continueBtn.setVisibility(View.INVISIBLE);
+            continueCard.setVisibility(View.GONE);
         }
     }
 }
