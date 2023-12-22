@@ -3,12 +3,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/lavender"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/pillai"
     tools:context=".ScannerFragment">
 
-    <TextView
+    <androidx.camera.view.PreviewView
+        android:id="@+id/previewView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Scanner" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </androidx.camera.view.PreviewView>
+
+    <TextView
+        android:id="@+id/codePreview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Code"
+        android:textColor="@color/white"
+        android:textSize="28sp"
+        android:textAlignment="center"/>
 
 </FrameLayout>

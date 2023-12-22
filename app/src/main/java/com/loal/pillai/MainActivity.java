@@ -18,10 +18,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Set the default fragment to scanner
         replaceFragment(new ScannerFragment());
 
+        // Setup for bottom navigation
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setBackground(null);
+
+        // Switch pages
         bottomNavigationView.setOnItemSelectedListener(item -> {
             switch(item.getItemId()) {
                 case R.id.help:
@@ -34,11 +38,14 @@ public class MainActivity extends AppCompatActivity {
                     replaceFragment(new ScannerFragment());
                     break;
             }
-
             return true;
         });
     }
 
+    /**
+     * Replace the visible fragment
+     * @param fragment Fragment to be displayed
+     */
     private void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
