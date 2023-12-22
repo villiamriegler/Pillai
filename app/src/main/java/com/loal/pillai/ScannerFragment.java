@@ -12,8 +12,10 @@ import android.graphics.YuvImage;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.OptIn;
 import androidx.camera.core.Camera;
 import androidx.camera.core.CameraSelector;
+import androidx.camera.core.ExperimentalGetImage;
 import androidx.camera.core.ImageAnalysis;
 import androidx.camera.core.ImageProxy;
 import androidx.camera.core.Preview;
@@ -40,6 +42,7 @@ import com.google.mlkit.vision.common.InputImage;
 
 import java.io.ByteArrayOutputStream;
 import java.nio.ByteBuffer;
+import java.util.Objects;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
@@ -134,15 +137,15 @@ public class ScannerFragment extends Fragment {
                 .build();
 
         // Analyze each frame
-        imageAnalysis.setAnalyzer(executor, image -> {
-            // Convert image to bitmap
-            Bitmap bitmap = imageProxyToBitmap(image);
-            if (bitmap != null) {
-                // Scan for bar codes
-                scanBarcode(bitmap);
+        imageAnalysis.setAnalyzer(executor, imageProxy -> {
+            try (imageProxy) {
+                if (imageProxy.getFormat() == ImageFormat.YUV_420_888) {
+                    // Directly process the image in YUV_420_888 format
+                    scanBarcode(imageProxy);
+                } else {
+                    // TODO: Handle other image formats
+                }
             }
-            // Important to close image to free resources
-            image.close();
         });
 
         // Link camera preview and the actual preview in UI
@@ -155,25 +158,24 @@ public class ScannerFragment extends Fragment {
 
     /**
      * Scan a bitmap for a barcode
-     * @param bitmap The bitmap to scan
+     * @param imageProxy The image to scan
      */
-    private void scanBarcode(Bitmap bitmap) {
-        // Initialize a barcode scanner from Google's ML Kit
+    @OptIn(markerClass = ExperimentalGetImage.class) private void scanBarcode(ImageProxy imageProxy) {
         BarcodeScanner scanner = BarcodeScanning.getClient();
+        InputImage inputImage = InputImage.fromMediaImage(Objects.requireNonNull(imageProxy.getImage()), imageProxy.getImageInfo().getRotationDegrees());
 
-        // Prepare bitmap for analysis
-        InputImage inputImage = InputImage.fromBitmap(bitmap, 0);
-
-        // Scan image for barcodes and extract them
         scanner.process(inputImage)
                 .addOnSuccessListener(barcodes -> {
                     for (Barcode barcode : barcodes) {
-                        // Get the barcode value
                         String rawValue = barcode.getRawValue();
                         codePreview.setText(rawValue);
                     }
+                })
+                .addOnFailureListener(e -> {
+                    // Handle errors
                 });
     }
+
 
     /**
      * Convert a image proxy to a bitmap
