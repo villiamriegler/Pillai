@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void showButtons(String code) {
         lastCode = code;
-        if(!code.isEmpty()) {
+        if(code != null) {
             scanBtn.setVisibility(View.GONE);
             continueCard.setVisibility(View.VISIBLE);
         } else {
