@@ -1,0 +1,53 @@
+<svg viewBox="0 0 140 220" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:bx="https://boxy-svg.com">
+  <defs>
+    <linearGradient id="gradient-2">
+      <title>MiddleGradient</title>
+      <stop offset="0" style="stop-color: rgb(1, 179, 231);"></stop>
+      <stop offset="1" style="stop-color: rgb(12, 237, 167);"></stop>
+    </linearGradient>
+    <linearGradient id="gradient-3">
+      <title>FullGradient</title>
+      <stop offset="0" style="stop-color: rgb(5, 253, 152);"></stop>
+      <stop offset="0.363" style="stop-color: rgb(5, 213, 195);"></stop>
+      <stop offset="0.569" style="stop-color: rgb(5, 205, 203);"></stop>
+      <stop offset="1" style="stop-color: rgb(6, 165, 250);"></stop>
+    </linearGradient>
+    <linearGradient id="gradient-2-0" gradientUnits="userSpaceOnUse" x1="233.557" y1="190.005" x2="233.557" y2="199.336" gradientTransform="matrix(0.000006, 1, -5.586057, 0.000027, 1320.405029, -38.409157)" xlink:href="#gradient-2"></linearGradient>
+    <linearGradient id="gradient-2-1" gradientUnits="userSpaceOnUse" x1="233.557" y1="190.005" x2="233.557" y2="199.336" gradientTransform="matrix(0.000006, 1, -5.586057, 0.000027, 1320.404785, -20.712923)" xlink:href="#gradient-2"></linearGradient>
+    <linearGradient id="gradient-2-2" gradientUnits="userSpaceOnUse" x1="233.557" y1="190.005" x2="233.557" y2="199.336" gradientTransform="matrix(0.000006, 1, -5.586057, 0.000027, 1320.404541, -3.499313)" xlink:href="#gradient-2"></linearGradient>
+    <linearGradient id="gradient-2-3" gradientUnits="userSpaceOnUse" x1="233.557" y1="190.005" x2="233.557" y2="199.336" gradientTransform="matrix(0.000006, 1, -5.586057, 0.000027, 1320.404785, 14.357796)" xlink:href="#gradient-2"></linearGradient>
+    <linearGradient id="gradient-2-4" gradientUnits="userSpaceOnUse" x1="233.557" y1="190.005" x2="233.557" y2="199.336" gradientTransform="matrix(0.000006, 1, -5.586057, 0.000027, 1320.404419, 31.893154)" xlink:href="#gradient-2"></linearGradient>
+    <linearGradient id="gradient-2-5" gradientUnits="userSpaceOnUse" x1="754" y1="728" x2="754" y2="971" gradientTransform="matrix(-0.002732, 0.999995, -1.50617, -0.004115, 2026.552433, 1.998018)" xlink:href="#gradient-2"></linearGradient>
+    <linearGradient id="gradient-3-0" gradientUnits="userSpaceOnUse" x1="754" y1="728" x2="754" y2="971" gradientTransform="matrix(0.007634, -0.999971, 2.69547, 0.020577, -1534.058199, 1514.997986)" xlink:href="#gradient-3"></linearGradient>
+    <linearGradient id="gradient-3-1" gradientUnits="userSpaceOnUse" x1="187.869" y1="121.114" x2="187.869" y2="139.132" gradientTransform="matrix(-0.016464, 0.999864, -5.964278, -0.098213, 1012.740346, -35.207808)" xlink:href="#gradient-3"></linearGradient>
+    <linearGradient id="gradient-3-2" gradientUnits="userSpaceOnUse" x1="208.622" y1="134.306" x2="208.622" y2="138.328" gradientTransform="matrix(0.708866, 0.705342, -18.705222, 18.798656, 2634.180877, -2595.674891)" xlink:href="#gradient-3"></linearGradient>
+    <linearGradient id="gradient-3-5" gradientUnits="userSpaceOnUse" x1="187.869" y1="121.114" x2="187.869" y2="139.132" gradientTransform="matrix(-0.010605, -0.999943, 5.89285, -0.062499, -531.567365, 325.068237)" xlink:href="#gradient-3"></linearGradient>
+    <linearGradient id="gradient-3-6" gradientUnits="userSpaceOnUse" x1="208.622" y1="134.306" x2="208.622" y2="138.328" gradientTransform="matrix(-0.726153, -0.687535, 17.630444, -18.620679, -2019.354456, 2794.034138)" xlink:href="#gradient-3"></linearGradient>
+  </defs>
+  <g transform="matrix(1, 0, 0, 1, -165.276917, -109.81485)">
+    <title>Body</title>
+    <rect x="195" y="190.005" width="78.185" height="9.331" style="paint-order: fill; fill: url(#gradient-2-0);"></rect>
+    <rect x="195" y="207.701" width="78.185" height="9.331" style="paint-order: fill; fill: url(#gradient-2-1);"></rect>
+    <rect x="195" y="224.915" width="78.185" height="9.331" style="paint-order: fill; fill: url(#gradient-2-2);"></rect>
+    <rect x="195" y="242.772" width="78.185" height="9.331" style="paint-order: fill; fill: url(#gradient-2-3);"></rect>
+    <rect x="195" y="260.307" width="78.185" height="9.331" style="paint-order: fill; fill: url(#gradient-2-4);"></rect>
+  </g>
+  <path style="fill: url(#gradient-2-5);" transform="matrix(0.160875, 0, 0, 0.160875, -52.484035, 52.161961)" d="M 997 728 A 243 243 0 1 1 511 728 L 754 728 Z">
+    <title>Bottom</title>
+  </path>
+  <g transform="matrix(1, 0, 0, 1, -165.116043, -110.136597)">
+    <title>Head</title>
+    <g>
+      <g transform="matrix(-1, 0, 0, 1, 467.577606, -0.113998)">
+        <ellipse style="fill: url(#gradient-3-1);" cx="187.869" cy="130.123" rx="9.009" ry="9.009"></ellipse>
+        <rect x="196.395" y="134.306" width="24.453" height="4.022" style="fill: url(#gradient-3-2);" transform="matrix(0.696092, 0.717953, -0.717953, 0.696092, 154.031647, -100.630569)"></rect>
+      </g>
+      <path style="fill: url(#gradient-3-0);" transform="matrix(0.160875, 0, 0, -0.160875, 112.79287, 297.594604)" d="M 997 728 A 243 243 0 1 1 511 728 L 754 728 Z"></path>
+      <g></g>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 0, -0.113998)">
+      <rect x="196.395" y="134.306" width="24.453" height="4.022" style="fill: url(#gradient-3-6);" transform="matrix(0.696092, 0.717953, -0.717953, 0.696092, 153.549011, -100.469696)"></rect>
+      <ellipse style="fill: url(#gradient-3-5);" cx="187.869" cy="130.123" rx="9.009" ry="9.009"></ellipse>
+    </g>
+  </g>
+</svg>

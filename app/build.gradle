@@ -54,4 +54,7 @@ dependencies {
 
     // Barcode scanner
     implementation 'com.google.mlkit:barcode-scanning:17.2.0'
+
+    // SVG images
+    implementation 'com.caverock:androidsvg:1.4'
 }
