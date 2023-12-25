@@ -8,9 +8,12 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="gray">#282828</color>
+    <color name="light_gray">#cfcfcf</color>
     <color name="lavender">#8692f7</color>
     <color name="transparent">#00000000</color>
     <color name="pillai">#424580</color>
     <color name="green">#49c476</color>
     <color name="red">#d16d54</color>
+    <color name="deselected">#7779A3</color>
+    <color name="selected">#424580</color>
 </resources>
