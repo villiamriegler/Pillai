@@ -12,6 +12,7 @@ import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DrugInfoAdapter extends RecyclerView.Adapter<DrugInfoAdapter.ViewHolder> {
@@ -24,6 +25,12 @@ public class DrugInfoAdapter extends RecyclerView.Adapter<DrugInfoAdapter.ViewHo
         this.layoutInflater = LayoutInflater.from(context);
         this.titles = titles;
         this.selectedOptions = selectedOptions;
+    }
+
+    public void setFilteredList(ArrayList<String> titles, ArrayList<Boolean> selectedOptions) {
+        this.titles = titles;
+        this.selectedOptions = selectedOptions;
+        notifyDataSetChanged();
     }
 
 

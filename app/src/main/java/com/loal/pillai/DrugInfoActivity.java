@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -13,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Locale;
 
 public class DrugInfoActivity extends AppCompatActivity {
 
@@ -30,6 +33,8 @@ public class DrugInfoActivity extends AppCompatActivity {
 
     DrugInfoAdapter adapter;
 
+    SearchView searchView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,18 +44,8 @@ public class DrugInfoActivity extends AppCompatActivity {
         Intent intent = getIntent();
         drugEANCode = intent.getStringExtra("CODE");
 
-        // Create all options
-        options = new ArrayList<>(Arrays.asList(
-                "Side effects",
-                "Contraindications",
-                "How to take it",
-                "Pregnancy",
-                "Interactions",
-                "Composition",
-                "Purpose of use",
-                "Warnings",
-                "Additional info"
-        ));
+        // Get all options
+        options = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.drug_info_options)));
 
         // All deselected
         selectedOptions = new ArrayList<>();
@@ -61,6 +56,7 @@ public class DrugInfoActivity extends AppCompatActivity {
         drugNameText = findViewById(R.id.drugNameText);
         recyclerView = findViewById(R.id.drugInfoRecycler);
         backBtn = findViewById(R.id.backBtn);
+        searchView = findViewById(R.id.searchView);
 
         // Back button
         backBtn.setOnClickListener(view -> this.finish());
@@ -76,5 +72,49 @@ public class DrugInfoActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         adapter = new DrugInfoAdapter(this, options, selectedOptions);
         recyclerView.setAdapter(adapter);
+
+        // Search options
+        searchView.clearFocus();
+        searchView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                filterOptions(s);
+                return false;
+            }
+        });
+
+    }
+
+    private void filterOptions(String text) {
+        //TODO: We need to save old selections and new ones when user does a search...
+        ArrayList<String> filteredTitles = new ArrayList<>();
+        ArrayList<Boolean> filteredSelection = new ArrayList<>();
+
+        // Add all titles that contain the searched string
+        int i = 0;
+        for (String title : options) {
+            if (title.toLowerCase().contains(text.toLowerCase())) {
+                filteredTitles.add(title);
+                filteredSelection.add(selectedOptions.get(i));
+            }
+            i++;
+        }
+
+        // Output
+        if(filteredTitles.isEmpty()) {
+            Toast.makeText(this, "No options available", Toast.LENGTH_SHORT).show();
+        }
+        adapter.setFilteredList(filteredTitles, filteredSelection);
     }
 }
