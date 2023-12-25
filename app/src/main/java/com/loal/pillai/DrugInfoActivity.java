@@ -26,6 +26,7 @@ public class DrugInfoActivity extends AppCompatActivity {
     RecyclerView recyclerView;
 
     ArrayList<String> options;
+    ArrayList<Boolean> selectedOptions;
 
     DrugInfoAdapter adapter;
 
@@ -51,6 +52,11 @@ public class DrugInfoActivity extends AppCompatActivity {
                 "Additional info"
         ));
 
+        // All deselected
+        selectedOptions = new ArrayList<>();
+        for (int i = 0; i < options.size(); i++, selectedOptions.add(false));
+
+
         // Find views
         drugNameText = findViewById(R.id.drugNameText);
         recyclerView = findViewById(R.id.drugInfoRecycler);
@@ -68,7 +74,7 @@ public class DrugInfoActivity extends AppCompatActivity {
 
         // Recycler view with options
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
-        adapter = new DrugInfoAdapter(this, options);
+        adapter = new DrugInfoAdapter(this, options, selectedOptions);
         recyclerView.setAdapter(adapter);
     }
 }

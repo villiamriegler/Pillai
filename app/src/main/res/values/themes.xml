@@ -26,7 +26,8 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="Theme.Pillai.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.Pillai.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+    </style>
 
     <style name="Theme.Pillai.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
