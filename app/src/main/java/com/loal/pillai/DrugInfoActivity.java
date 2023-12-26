@@ -102,6 +102,8 @@ public class DrugInfoActivity extends AppCompatActivity {
         ArrayList<String> filteredTitles = new ArrayList<>();
         HashMap<String,Boolean> filteredSelection = new HashMap<String,Boolean>();
 
+        adapter.setFilteredList(options, selectedOptions);
+
         // Add all titles that contain the searched string
         for (String title : options) {
             if (title.toLowerCase().contains(text.toLowerCase())) {
