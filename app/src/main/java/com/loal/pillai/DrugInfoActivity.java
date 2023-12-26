@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Locale;
 
 public class DrugInfoActivity extends AppCompatActivity {
@@ -29,7 +30,7 @@ public class DrugInfoActivity extends AppCompatActivity {
     RecyclerView recyclerView;
 
     ArrayList<String> options;
-    ArrayList<Boolean> selectedOptions;
+    HashMap<String,Boolean> selectedOptions;
 
     DrugInfoAdapter adapter;
 
@@ -48,8 +49,8 @@ public class DrugInfoActivity extends AppCompatActivity {
         options = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.drug_info_options)));
 
         // All deselected
-        selectedOptions = new ArrayList<>();
-        for (int i = 0; i < options.size(); i++, selectedOptions.add(false));
+        selectedOptions = new HashMap<String,Boolean>();
+        for (String title : options) {selectedOptions.put(title ,false);}
 
 
         // Find views
@@ -99,16 +100,14 @@ public class DrugInfoActivity extends AppCompatActivity {
     private void filterOptions(String text) {
         //TODO: We need to save old selections and new ones when user does a search...
         ArrayList<String> filteredTitles = new ArrayList<>();
-        ArrayList<Boolean> filteredSelection = new ArrayList<>();
+        HashMap<String,Boolean> filteredSelection = new HashMap<String,Boolean>();
 
         // Add all titles that contain the searched string
-        int i = 0;
         for (String title : options) {
             if (title.toLowerCase().contains(text.toLowerCase())) {
                 filteredTitles.add(title);
-                filteredSelection.add(selectedOptions.get(i));
+                filteredSelection.put(title, selectedOptions.get(title));
             }
-            i++;
         }
 
         // Output

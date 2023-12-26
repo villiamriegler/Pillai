@@ -13,21 +13,22 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class DrugInfoAdapter extends RecyclerView.Adapter<DrugInfoAdapter.ViewHolder> {
 
     private LayoutInflater layoutInflater;
     private List<String> titles;
-    private List<Boolean> selectedOptions;
+    private HashMap<String,Boolean> selectedOptions;
 
-    public DrugInfoAdapter(Context context, List<String> titles, List<Boolean> selectedOptions) {
+    public DrugInfoAdapter(Context context, List<String> titles, HashMap<String,Boolean> selectedOptions) {
         this.layoutInflater = LayoutInflater.from(context);
         this.titles = titles;
         this.selectedOptions = selectedOptions;
     }
 
-    public void setFilteredList(ArrayList<String> titles, ArrayList<Boolean> selectedOptions) {
+    public void setFilteredList(ArrayList<String> titles, HashMap<String,Boolean> selectedOptions) {
         this.titles = titles;
         this.selectedOptions = selectedOptions;
         notifyDataSetChanged();
@@ -50,11 +51,11 @@ public class DrugInfoAdapter extends RecyclerView.Adapter<DrugInfoAdapter.ViewHo
         // Set on click action
         holder.card_background.setOnClickListener(view -> {
             // Toggle selected state
-            selectedOptions.set(position, !selectedOptions.get(position));
+            selectedOptions.put(title, !selectedOptions.get(title));
 
             // Set correct color
             int color;
-            if(selectedOptions.get(position)) {
+            if(selectedOptions.get(title)) {
                 color = ContextCompat.getColor(holder.itemView.getContext(), R.color.selected);
             } else {
                 color = ContextCompat.getColor(holder.itemView.getContext(), R.color.deselected);
